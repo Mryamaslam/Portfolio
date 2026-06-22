@@ -29876,7 +29876,7 @@
                                         className: "text-21 fw-600 text-uppercase mb-0 ms-n1",
                                         children: (0, u.jsx)(bl(), {
                                             options: {
-                                                strings: ["BUSINESS", "DEVELOPER", "MANAGER"],
+                                                strings: ["MARKET MAKER", "DEVELOPER", "CONSULTANT"],
                                                 autoStart: !0,
                                                 loop: !0
                                             }
