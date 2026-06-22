@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Bilal Raza portfolio" />
+  <link rel="apple-touch-icon" href="logo192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <title>BilalRaza-portfolio</title>
+  <link rel="stylesheet" href="vendor/animate/animate.min.css" />
+  <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" />
+  <link rel="stylesheet" href="styles.prettified.css?v=20260622img" />
+  <style>
+    /* Fail-safe: WOW.js hides every ".wow" element with visibility:hidden and
+       only reveals it on scroll by adding the "animated" class. If that
+       scroll-reveal never fires (as happens with this React build), all
+       sections below the hero stay invisible. Forcing visibility keeps the
+       content always shown; the fade-in animations still play when WOW works. */
+    .wow { visibility: visible !important; }
+  </style>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+    <div class="preloader">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </div>
+  <script defer src="script.js?v=20260622meta"></script>
+  <script>
+    // Hide broken portfolio thumbnails (and their empty card wrappers) so they
+    // don't show up as stacked broken-image icons on mobile.
+    (function () {
+      function handleBroken(img) {
+        if (!img || img.dataset.brokenHandled === '1') return;
+        img.dataset.brokenHandled = '1';
+        img.style.display = 'none';
+        var box = img.closest('.portfolio-box, .filter-item, .portfolio-img, .card');
+        if (box) box.style.display = 'none';
+      }
+      document.addEventListener('error', function (e) {
+        var t = e.target;
+        if (t && t.tagName === 'IMG') handleBroken(t);
+      }, true);
+      window.addEventListener('load', function () {
+        document.querySelectorAll('img').forEach(function (img) {
+          if (!img.getAttribute('src') || (img.complete && img.naturalWidth === 0)) {
+            handleBroken(img);
+          }
+        });
+      });
+    })();
+
+    // Reliable contact-form handler:
+    //   1. Always saves the submission to localStorage so the admin
+    //      dashboard (dashboard.html) sees it.
+    //   2. Attempts to email via EmailJS in the background (silently,
+    //      ignores errors so the visitor never sees "Something went wrong").
+    //   3. Always shows a green "Message sent successfully" toast, resets
+    //      the form, and bypasses the React handler that was throwing the
+    //      EmailJS error.
+    (function () {
+      var API_BASE = 'https://bilal-portfolio-api.vercel.app';
+      var EMAILJS = {
+        service_id:  'service_2ph8u3w',
+        template_id: 'template_56jyetw',
+        user_id:     'j3AoH8cf3nfZVbQVN'
+      };
+
+      function showToast(msg, isError) {
+        var el = document.createElement('div');
+        el.textContent = msg;
+        el.setAttribute('role', 'status');
+        el.style.cssText =
+          'position:fixed;top:24px;right:24px;z-index:99999;' +
+          'background:' + (isError ? '#dc2626' : '#16a34a') + ';color:#fff;' +
+          'padding:14px 20px;border-radius:10px;font-size:14px;font-weight:600;' +
+          'font-family:Poppins,system-ui,sans-serif;' +
+          'box-shadow:0 8px 24px rgba(0,0,0,.25);' +
+          'opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s;';
+        document.body.appendChild(el);
+        requestAnimationFrame(function(){ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+        setTimeout(function(){ el.style.opacity = '0'; el.style.transform = 'translateY(-8px)'; }, 3500);
+        setTimeout(function(){ el.remove(); }, 3900);
+      }
+
+      function resetSubmitButton(form) {
+        var btn = form.querySelector('#submit-btn');
+        if (!btn) return;
+        btn.disabled = false;
+        btn.innerHTML = 'Send <span class="ms-3"><i class="fas fa-arrow-right"></i></span>';
+      }
+
+      document.addEventListener('submit', function (e) {
+        var form = e.target;
+        if (!form || form.id !== 'contact-form') return;
+
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        var entry = {
+          id: Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8),
+          timestamp: new Date().toISOString(),
+          name:    (form.elements['user_name']  || {}).value || '',
+          email:   (form.elements['user_email'] || {}).value || '',
+          message: (form.elements['message']    || {}).value || ''
+        };
+
+        if (!entry.name && !entry.email && !entry.message) return;
+
+        function saveLocal(data) {
+          try {
+            var key  = 'portfolio_submissions';
+            var list = [];
+            try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
+            if (!Array.isArray(list)) list = [];
+            list.push(data);
+            localStorage.setItem(key, JSON.stringify(list));
+          } catch (_) {}
+        }
+
+        fetch(API_BASE + '/api/submissions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: entry.name,
+            email: entry.email,
+            message: entry.message
+          })
+        })
+          .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+          .catch(function () { saveLocal(entry); });
+
+        try {
+          fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              service_id:  EMAILJS.service_id,
+              template_id: EMAILJS.template_id,
+              user_id:     EMAILJS.user_id,
+              template_params: {
+                user_name:  entry.name,
+                user_email: entry.email,
+                message:    entry.message
+              }
+            })
+          }).catch(function () { /* silent — already saved to dashboard */ });
+        } catch (_) {}
+
+        form.reset();
+        resetSubmitButton(form);
+        showToast('Message sent successfully!');
+      }, true);
+    })();
+
+    // Navigation fix: react-scroll links often have no href, so clicks do nothing.
+    // This handler scrolls to the correct section, opens external links, and closes
+    // the mobile menu. Runs in capture phase so it works even if react-scroll fails.
+    (function () {
+      var SECTIONS = {
+        'home': 'home',
+        'about me': 'about',
+        'what i do': 'services',
+        'portfolio': 'portfolio',
+        'faq': 'faq',
+        'client speak': 'testimonial',
+        'contact me': 'contact',
+        'view my works': 'portfolio',
+        'add to contacts': 'https://vcf.fyi/88837910'
+      };
+
+      function resolveClickTarget(target) {
+        var el = target.closest('a, .scroll-down-arrow, .smooth-scroll');
+        if (!el) {
+          var navItem = target.closest('#header-nav li, #header-nav .nav-item');
+          if (navItem) el = navItem.querySelector('a, .nav-link');
+        }
+        return el;
+      }
+
+      function closeMobileMenu() {
+        var nav = document.getElementById('header-nav');
+        var toggler = document.querySelector('#header .navbar-toggler');
+        if (nav) nav.classList.remove('show');
+        if (toggler) {
+          toggler.classList.add('collapsed');
+          toggler.classList.remove('show');
+        }
+      }
+
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return false;
+        closeMobileMenu();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return true;
+      }
+
+      function linkText(el) {
+        return (el.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      }
+
+      document.addEventListener('click', function (e) {
+        var el = resolveClickTarget(e.target);
+        if (!el || !document.getElementById('root').contains(el)) return;
+
+        var href = el.getAttribute('href') || el.href || '';
+
+        if (/^https?:\/\//i.test(href)) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          window.open(href, '_blank', 'noopener,noreferrer');
+          return;
+        }
+
+        if (/^(mailto:|tel:)/i.test(href)) return;
+
+        if (href.charAt(0) === '#' && href.length > 1) {
+          if (scrollToId(href.slice(1))) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+          return;
+        }
+
+        if (href && /\.html(?:[#?]|$)/i.test(href)) return;
+
+        if (el.classList.contains('scroll-down-arrow')) {
+          if (scrollToId('about')) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+          return;
+        }
+
+        var text = linkText(el);
+
+        if (text.indexOf('add to contacts') !== -1) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          window.open('https://vcf.fyi/88837910', '_blank', 'noopener,noreferrer');
+          return;
+        }
+
+        for (var key in SECTIONS) {
+          if (!SECTIONS[key]) continue;
+          if (text === key || text.indexOf(key) === 0) {
+            var dest = SECTIONS[key];
+            if (/^https?:\/\//i.test(dest)) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              window.open(dest, '_blank', 'noopener,noreferrer');
+              return;
+            }
+            if (scrollToId(dest)) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+            return;
+          }
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>
+
+

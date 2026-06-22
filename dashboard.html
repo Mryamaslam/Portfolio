@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Dashboard | Bilal Raza Portfolio</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.prettified.css" />
+  <style>
+    :root {
+      --primary: #ffd43b;
+      --primary-dark: #f4c430;
+      --dark: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --bg: #f7f8fa;
+    }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--dark);
+      margin: 0;
+    }
+
+    /* Login overlay */
+    .login-screen {
+      position: fixed; inset: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      padding: 16px;
+    }
+    .login-card {
+      background: #fff; border-radius: 14px;
+      padding: 32px 28px; max-width: 380px; width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+    .login-card h1 { font-size: 22px; margin: 0 0 6px; font-weight: 700; }
+    .login-card p { color: var(--muted); margin: 0 0 22px; font-size: 14px; }
+    .login-card label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    .login-card .login-input {
+      width: 100%; padding: 11px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-size: 15px; outline: none; box-sizing: border-box;
+      transition: border-color .15s, box-shadow .15s;
+      font-family: inherit; color: var(--dark); background: #fff;
+    }
+    .login-card .login-input:focus { border-color: var(--primary-dark); box-shadow: 0 0 0 3px rgba(244,196,48,.25); }
+    .login-card .btn-login {
+      margin-top: 16px; width: 100%; background: var(--primary); color: #1a1a1a;
+      border: none; padding: 12px; border-radius: 10px; font-weight: 700;
+      cursor: pointer; font-size: 15px; transition: background .15s;
+    }
+    .login-card .btn-login:hover { background: var(--primary-dark); }
+    .login-card .error { color: #dc2626; font-size: 13px; margin-top: 10px; min-height: 18px; }
+    .login-card .show-pw { font-size: 12px; color: var(--muted); margin-top: 8px; cursor: pointer; user-select: none; }
+    .login-card .lock-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(244,196,48,.2); color: #b08807;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 14px;
+    }
+
+    /* Dashboard */
+    .dashboard { display: none; }
+    .dashboard.active { display: block; }
+
+    .topbar {
+      background: #fff; border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar h2 { margin: 0; font-size: 18px; font-weight: 700; }
+    .topbar .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      border: 1px solid var(--border); background: #fff; color: var(--dark);
+      padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .btn:hover { background: #f3f4f6; }
+    .btn-primary { background: var(--primary); border-color: var(--primary-dark); }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-danger { color: #b91c1c; border-color: #fecaca; }
+    .btn-danger:hover { background: #fef2f2; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 14px; margin-bottom: 18px; }
+    .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+    .stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+    .stat-card .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+    .search-input {
+      flex: 1; min-width: 220px;
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 10px;
+      background: #fff; font-size: 14px; outline: none;
+    }
+    .search-input:focus { border-color: var(--primary-dark); }
+
+    .table-wrap { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720px; }
+    thead { background: #fafafa; }
+    th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbfc; }
+    td .msg { white-space: pre-wrap; word-break: break-word; max-width: 480px; }
+    td .email a { color: #1d4ed8; text-decoration: none; }
+    td .email a:hover { text-decoration: underline; }
+    .actions-cell { white-space: nowrap; }
+    .actions-cell .btn { padding: 4px 10px; font-size: 12px; }
+
+    .empty {
+      padding: 60px 20px; text-align: center; color: var(--muted);
+    }
+    .empty .icon { font-size: 38px; margin-bottom: 10px; opacity: .6; }
+    .empty h3 { margin: 6px 0; color: var(--dark); }
+
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--dark); color: #fff;
+      padding: 12px 18px; border-radius: 10px; font-size: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      opacity: 0; transform: translateY(10px); transition: opacity .2s, transform .2s;
+      pointer-events: none; z-index: 100;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      .topbar { padding: 12px 14px; gap: 10px; }
+      .topbar h2 { font-size: 16px; width: 100%; }
+      .topbar .actions { width: 100%; justify-content: flex-start; }
+      .topbar .actions .btn { flex: 1 1 calc(50% - 4px); min-width: 0; padding: 8px 10px; font-size: 12px; }
+      table { font-size: 13px; min-width: 640px; }
+      th, td { padding: 10px; }
+      .container { padding: 16px 12px; }
+      .stat-row { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .stat-card { padding: 12px; }
+      .stat-card .value { font-size: 22px; }
+      .login-card { padding: 24px 20px; }
+      .toast { left: 12px; right: 12px; bottom: 12px; text-align: center; }
+    }
+    @media (max-width: 360px) {
+      .topbar .actions .btn { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-screen">
+    <form class="login-card" id="loginForm" autocomplete="off">
+      <div class="lock-icon" aria-hidden="true">&#128274;</div>
+      <h1>Admin Dashboard</h1>
+      <p>Enter your username and password to view contact form submissions.</p>
+      <label for="username">Username</label>
+      <input id="username" type="text" class="login-input" placeholder="Enter username" autocomplete="username" required />
+      <label for="pw" style="margin-top:14px;">Password</label>
+      <input id="pw" type="password" class="login-input" placeholder="Enter password" autocomplete="current-password" required />
+      <div class="show-pw" id="togglePw">Show password</div>
+      <button type="submit" class="btn-login">Sign in</button>
+      <div class="error" id="errMsg"></div>
+    </form>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <div class="topbar">
+      <h2>Form Submissions Dashboard</h2>
+      <div class="actions">
+        <button class="btn" id="refreshBtn">Refresh</button>
+        <button class="btn btn-primary" id="exportBtn">Export CSV</button>
+        <button class="btn btn-danger" id="clearBtn">Clear All</button>
+        <button class="btn" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="label">Total Submissions</div>
+          <div class="value" id="statTotal">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Today</div>
+          <div class="value" id="statToday">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Last 7 Days</div>
+          <div class="value" id="statWeek">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Unique Emails</div>
+          <div class="value" id="statUnique">0</div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input class="search-input" id="search" type="text" placeholder="Search by name, email, or message..." />
+      </div>
+
+      <div class="table-wrap">
+        <table id="dataTable">
+          <thead>
+            <tr>
+              <th style="width:160px;">Date</th>
+              <th style="width:160px;">Name</th>
+              <th style="width:220px;">Email</th>
+              <th>Message</th>
+              <th style="width:90px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div id="emptyState" class="empty" style="display:none;">
+          <div class="icon">&#128229;</div>
+          <h3>No submissions yet</h3>
+          <p>When someone submits the contact form, it will show up here.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+  /* ============================================================
+     CHANGE YOUR LOGIN HERE
+     The dashboard is protected by the username + password below.
+     To change them, edit these two lines.
+     ============================================================ */
+  var DASHBOARD_USERNAME = "admin";
+  var DASHBOARD_PASSWORD = "admin123";
+  var API_BASE = "https://bilal-portfolio-api.vercel.app";
+
+  // Fallback when API is offline
+  var STORAGE_KEY = "portfolio_submissions";
+  var cachedSubmissions = [];
+  // Session flag so you don't have to re-enter the password every page reload
+  var SESSION_KEY = "portfolio_admin_session";
+
+  /* --------------------------- LOGIN --------------------------- */
+  var loginScreen = document.getElementById('loginScreen');
+  var dashboard   = document.getElementById('dashboard');
+  var loginForm   = document.getElementById('loginForm');
+  var userInput   = document.getElementById('username');
+  var pwInput     = document.getElementById('pw');
+  var togglePw    = document.getElementById('togglePw');
+  var errMsg      = document.getElementById('errMsg');
+
+  function showDashboard() {
+    loginScreen.style.display = 'none';
+    dashboard.classList.add('active');
+    refreshData(render);
+  }
+  function hideDashboard() {
+    dashboard.classList.remove('active');
+    loginScreen.style.display = 'flex';
+    userInput.value = '';
+    pwInput.value = '';
+    userInput.focus();
+  }
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    showDashboard();
+  } else {
+    setTimeout(function(){ userInput.focus(); }, 100);
+  }
+
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var u = (userInput.value || '').trim();
+    var p = pwInput.value || '';
+    if (u === DASHBOARD_USERNAME && p === DASHBOARD_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      errMsg.textContent = '';
+      showDashboard();
+    } else {
+      errMsg.textContent = 'Incorrect username or password. Please try again.';
+      pwInput.select();
+    }
+  });
+
+  togglePw.addEventListener('click', function() {
+    if (pwInput.type === 'password') {
+      pwInput.type = 'text';
+      togglePw.textContent = 'Hide password';
+    } else {
+      pwInput.type = 'password';
+      togglePw.textContent = 'Show password';
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function() {
+    sessionStorage.removeItem(SESSION_KEY);
+    hideDashboard();
+  });
+
+  /* --------------------------- DATA --------------------------- */
+  function loadLocal() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+  function loadAll() {
+    return cachedSubmissions.slice();
+  }
+  function refreshData(done) {
+    fetch(API_BASE + '/api/submissions')
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (data) {
+        cachedSubmissions = Array.isArray(data) ? data : [];
+        if (done) done();
+      })
+      .catch(function () {
+        cachedSubmissions = loadLocal();
+        if (done) done();
+        toast('API offline — showing local data');
+      });
+  }
+  function deleteOne(id) {
+    fetch(API_BASE + '/api/submissions/' + encodeURIComponent(id), { method: 'DELETE' })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        refreshData(function () {
+          render();
+          toast('Submission deleted');
+        });
+      })
+      .catch(function () {
+        var arr = loadLocal().filter(function (r) { return r.id !== id; });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+        cachedSubmissions = arr;
+        render();
+        toast('Submission deleted (local only)');
+      });
+  }
+
+  /* --------------------------- RENDER --------------------------- */
+  var rowsEl   = document.getElementById('rows');
+  var emptyEl  = document.getElementById('emptyState');
+  var searchEl = document.getElementById('search');
+
+  function fmtDate(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return iso || '';
+    return d.toLocaleString();
+  }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function render() {
+    var all = loadAll().slice().sort(function(a, b) {
+      return new Date(b.timestamp) - new Date(a.timestamp);
+    });
+    var q = (searchEl.value || '').trim().toLowerCase();
+    var list = q ? all.filter(function(r){
+      return (r.name||'').toLowerCase().indexOf(q) > -1
+          || (r.email||'').toLowerCase().indexOf(q) > -1
+          || (r.message||'').toLowerCase().indexOf(q) > -1;
+    }) : all;
+
+    // Stats use ALL submissions (not filtered)
+    var now = Date.now();
+    var dayMs = 24 * 60 * 60 * 1000;
+    var today = 0, week = 0;
+    var emails = {};
+    all.forEach(function(r) {
+      var t = new Date(r.timestamp).getTime();
+      if (!isNaN(t)) {
+        if (now - t < dayMs) today++;
+        if (now - t < 7 * dayMs) week++;
+      }
+      if (r.email) emails[r.email.toLowerCase()] = 1;
+    });
+    document.getElementById('statTotal').textContent  = all.length;
+    document.getElementById('statToday').textContent  = today;
+    document.getElementById('statWeek').textContent   = week;
+    document.getElementById('statUnique').textContent = Object.keys(emails).length;
+
+    if (list.length === 0) {
+      rowsEl.innerHTML = '';
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+    rowsEl.innerHTML = list.map(function(r) {
+      return '<tr>'
+        + '<td>' + esc(fmtDate(r.timestamp)) + '</td>'
+        + '<td>' + esc(r.name) + '</td>'
+        + '<td class="email"><a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></td>'
+        + '<td><div class="msg">' + esc(r.message) + '</div></td>'
+        + '<td class="actions-cell"><button class="btn btn-danger" data-del="' + esc(r.id) + '">Delete</button></td>'
+        + '</tr>';
+    }).join('');
+  }
+
+  rowsEl.addEventListener('click', function(e) {
+    var id = e.target.getAttribute('data-del');
+    if (id && confirm('Delete this submission?')) deleteOne(id);
+  });
+
+  searchEl.addEventListener('input', render);
+  document.getElementById('refreshBtn').addEventListener('click', function() {
+    refreshData(function () {
+      render();
+      toast('Refreshed');
+    });
+  });
+  document.getElementById('clearBtn').addEventListener('click', function() {
+    if (!confirm('Delete ALL submissions? This cannot be undone.')) return;
+    fetch(API_BASE + '/api/submissions', { method: 'DELETE' })
+      .then(function (r) {
+        if (!r.ok) throw new Error();
+        cachedSubmissions = [];
+        localStorage.setItem(STORAGE_KEY, '[]');
+        render();
+        toast('All submissions cleared');
+      })
+      .catch(function () {
+        localStorage.setItem(STORAGE_KEY, '[]');
+        cachedSubmissions = [];
+        render();
+        toast('Cleared local data (API offline)');
+      });
+  });
+
+  /* --------------------------- CSV EXPORT --------------------------- */
+  function csvEscape(s) {
+    s = String(s == null ? '' : s);
+    if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+  document.getElementById('exportBtn').addEventListener('click', function() {
+    var all = loadAll();
+    if (all.length === 0) { toast('Nothing to export'); return; }
+    var header = ['Date', 'Name', 'Email', 'Message'];
+    var rows = all.map(function(r) {
+      return [fmtDate(r.timestamp), r.name, r.email, r.message].map(csvEscape).join(',');
+    });
+    var csv = header.join(',') + '\n' + rows.join('\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    a.href = url;
+    a.download = 'submissions-' + stamp + '.csv';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+    toast('Exported ' + all.length + ' submission(s)');
+  });
+
+  /* --------------------------- TOAST --------------------------- */
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2000);
+  }
+
+  /* Auto-refresh once a minute so new submissions appear */
+  setInterval(function () {
+    if (dashboard.classList.contains('active')) refreshData(render);
+  }, 60000);
+  </script>
+</body>
+</html>

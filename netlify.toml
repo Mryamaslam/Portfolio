@@ -1,0 +1,17 @@
+# Netlify configuration for Bilal Raza portfolio (static site)
+# This folder IS the site root, so no build step is needed.
+
+[build]
+  publish = "."
+  command = ""
+
+# Long-cache static assets (images, fonts, css, js)
+[[headers]]
+  for = "/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

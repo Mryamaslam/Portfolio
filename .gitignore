@@ -1,0 +1,7 @@
+*.zip
+*.bak
+.env
+node_modules/
+.DS_Store
+Thumbs.db
+_cleanup_log*.txt
