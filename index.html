@@ -29,7 +29,7 @@
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div>
   </div>
-  <script defer src="script.js?v=20260622meta"></script>
+  <script defer src="script.js?v=20260622vcf"></script>
   <script>
     // Hide broken portfolio thumbnails (and their empty card wrappers) so they
     // don't show up as stacked broken-image icons on mobile.
@@ -170,7 +170,7 @@
         'client speak': 'testimonial',
         'contact me': 'contact',
         'view my works': 'portfolio',
-        'add to contacts': 'https://vcf.fyi/88837910'
+        'add to contacts': 'bilal-raza.vcf'
       };
 
       function resolveClickTarget(target) {
@@ -242,7 +242,12 @@
         if (text.indexOf('add to contacts') !== -1) {
           e.preventDefault();
           e.stopImmediatePropagation();
-          window.open('https://vcf.fyi/88837910', '_blank', 'noopener,noreferrer');
+          var vcfLink = document.createElement('a');
+          vcfLink.href = 'bilal-raza.vcf';
+          vcfLink.download = 'Bilal-Raza.vcf';
+          document.body.appendChild(vcfLink);
+          vcfLink.click();
+          vcfLink.remove();
           return;
         }
 

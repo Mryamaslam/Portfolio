@@ -29891,7 +29891,8 @@
                                         style: {
                                             cursor: "pointer"
                                         },
-                                        href: "https://vcf.fyi/88837910",
+                                        download: "Bilal-Raza.vcf",
+                                        href: "bilal-raza.vcf",
                                         children: ["Add to contacts", (0, u.jsx)("span", {
                                             className: "text-4 ms-2",
                                             children: (0, u.jsx)("i", {
