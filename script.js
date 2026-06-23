@@ -29678,7 +29678,7 @@
                                                 className: "bg-light rounded-pill d-inline-block p-3 shadow-lg wow zoomIn",
                                                 children: (0, u.jsx)("img", {
                                                     className: "img-fluid rounded-pill d-block",
-                                                    src: "images/home_image.png?v=20260602",
+                                                    src: "images/home_image1.png?v=20260622home1",
                                                     title: "I'm Callum",
                                                     alt: "I'm David"
                                                 })
@@ -29916,7 +29916,7 @@
                                         className: "bg-white rounded-circle d-inline-block p-3 shadow-lg border border-dark border-3 wow zoomIn",
                                         children: (0, u.jsx)("img", {
                                             className: "img-fluid rounded-circle d-block",
-                                            src: "images/home_image.png?v=20260602",
+                                            src: "images/home_image1.png?v=20260622home1",
                                             title: "I'm Callum",
                                             alt: "I'm David",
                                             style: {
@@ -30419,7 +30419,7 @@
                                         className: "bg-white shadow rounded-pill p-2 mb-4 d-inline-block wow zoomIn",
                                         children: (0, u.jsx)("img", {
                                             className: "img-fluid rounded-pill d-block",
-                                            src: "images/home_image.png?v=20260602",
+                                            src: "images/home_image1.png?v=20260622home1",
                                             title: "I'm David",
                                             alt: "David"
                                         })
@@ -30484,7 +30484,7 @@
                                                     className: "bg-white shadow rounded-pill p-2 mb-4 d-inline-block wow zoomIn",
                                                     children: [" ", (0, u.jsx)("img", {
                                                         className: "img-fluid rounded-pill d-block",
-                                                        src: "images/home_image.png?v=20260602",
+                                                        src: "images/home_image1.png?v=20260622home1",
                                                         title: "I'm David",
                                                         alt: "I'm David"
                                                     }), " "]
@@ -30562,7 +30562,7 @@
                                                 className: "bg-white shadow rounded-pill p-2 mb-4 d-inline-block wow fadeInUp",
                                                 children: [" ", (0, u.jsx)("img", {
                                                     className: "img-fluid rounded-pill d-block",
-                                                    src: "images/home_image.png?v=20260602",
+                                                    src: "images/home_image1.png?v=20260622home1",
                                                     title: "I'm David",
                                                     alt: "I'm David"
                                                 }), " "]
@@ -30825,7 +30825,7 @@
                                                 className: "bg-light rounded-pill d-inline-block p-3 shadow-lg wow zoomIn",
                                                 children: [" ", (0, u.jsx)("img", {
                                                     className: "img-fluid rounded-pill d-block",
-                                                    src: "images/home_image.png?v=20260602",
+                                                    src: "images/home_image1.png?v=20260622home1",
                                                     title: "I'm Callum",
                                                     alt: "I'm David"
                                                 })]
