@@ -29635,7 +29635,7 @@
                                             className: "col-lg-7 text-center text-lg-start align-self-center order-1 order-lg-0",
                                             children: [(0, u.jsx)("h1", {
                                                 className: "text-12 fw-300 mb-0 text-uppercase",
-                                                children: "Hi, I'm a Freelancer"
+                                                children: "Hi, I'm Bilal Raza"
                                             }), (0, u.jsx)("h2", {
                                                 className: "text-21 fw-600 text-uppercase mb-0 ms-n1",
                                                 children: (0, u.jsx)(bl(), {
@@ -29872,7 +29872,10 @@
                                 className: "row",
                                 children: [(0, u.jsxs)("div", {
                                     className: "col-lg-7 text-center text-lg-start align-self-center order-1 order-lg-0 wow fadeIn",
-                                    children: [(0, u.jsx)("h2", {
+                                    children: [(0, u.jsx)("h1", {
+                                        className: "text-12 fw-300 mb-0 text-uppercase",
+                                        children: "Hi, I'm Bilal Raza"
+                                    }), (0, u.jsx)("h2", {
                                         className: "text-21 fw-600 text-uppercase mb-0 ms-n1",
                                         children: (0, u.jsx)(bl(), {
                                             options: {
@@ -29963,7 +29966,7 @@
                                                 className: "col-lg-12 text-center order-1 order-lg-0",
                                                 children: [(0, u.jsx)("h1", {
                                                     className: "text-8 text-white fw-400 mb-0 text-uppercase",
-                                                    children: "Hi, I'm a Freelancer"
+                                                    children: "Hi, I'm Bilal Raza"
                                                 }), (0, u.jsxs)("h2", {
                                                     className: "text-23 text-white fw-600 text-uppercase mb-0 ms-n1",
                                                     children: [(0, u.jsx)(bl(), {
@@ -30615,7 +30618,7 @@
                                     className: "col-lg-7 text-center text-lg-start align-self-center order-1 order-lg-0",
                                     children: [(0, u.jsx)("h1", {
                                         className: "text-12 fw-300 mb-0 text-uppercase",
-                                        children: "Hi, I'm a Freelancer"
+                                        children: "Hi, I'm Bilal Raza"
                                     }), (0, u.jsxs)("h2", {
                                         className: "text-21 fw-600 text-uppercase mb-0 ms-n1",
                                         children: [(0, u.jsx)(bl(), {
@@ -30703,7 +30706,7 @@
                                                 className: "col-lg-12 text-center order-1 order-lg-0",
                                                 children: [(0, u.jsx)("h1", {
                                                     className: "text-8 text-white fw-400 mb-0 text-uppercase",
-                                                    children: "Hi, I'm a Freelancer"
+                                                    children: "Hi, I'm Bilal Raza"
                                                 }), (0, u.jsxs)("h2", {
                                                     className: "text-23 text-white fw-600 text-uppercase mb-0 ms-n1",
                                                     children: [(0, u.jsx)(bl(), {
@@ -30779,7 +30782,7 @@
                                             className: "col-lg-7 text-center text-lg-start align-self-center order-1 order-lg-0",
                                             children: [(0, u.jsx)("h1", {
                                                 className: "text-12 fw-300 mb-0 text-uppercase",
-                                                children: "Hi, I'm a Freelancer"
+                                                children: "Hi, I'm Bilal Raza"
                                             }), (0, u.jsxs)("h2", {
                                                 className: "text-21 fw-600 text-uppercase mb-0 ms-n1",
                                                 children: [(0, u.jsx)(bl(), {
