@@ -23065,16 +23065,11 @@
                     categories: [y.DETAILED]
                     });
                     (0, t.useEffect)((function() {
-                        return e.current = new(h())(".portfolio-filter", {
-                                itemSelector: ".filter-item",
-                                layoutMode: "masonry",
-                                originLeft: !g
-                            }),
-                            function() {
-                                e.current.destroy()
-                            }
+                        var w = document.querySelector("#portfolio .container > .portfolio");
+                        w && w.parentNode && w.parentNode.removeChild(w);
+                        return function() {}
                     }), []), (0, t.useEffect)((function() {
-                        s && ("*" === r ? e.current.arrange({
+                        e.current && s && ("*" === r ? e.current.arrange({
                             filter: "*"
                         }) : e.current.arrange({
                             filter: ".".concat(r)
@@ -23201,68 +23196,6 @@
                                             })
                                         })
                                     })]
-                                }),(0, u.jsx)("div", {
-                                    className: "portfolio wow fadeInUp",
-                                    children: (0, u.jsx)("div", {
-                                        className: "row portfolio-filter filter-container g-4",
-                                        children: x.length > 0 && x.map((function(e, t) {
-                                            return (0, u.jsx)("div", {
-                                                className: "col-sm-6 col-lg-4 filter-item " + S(e.categories),
-                                                children: (0, u.jsx)("div", {
-                                                    className: "portfolio-box",
-                                                    children: (0, u.jsxs)("div", {
-                                                        className: "portfolio-img",
-                                                        children: [(0, u.jsx)("img", {
-                                                            onLoad: function() {
-                                                                l(s + 1)
-                                                            },
-                                                            className: "img-fluid d-block portfolio-image",
-                                                            src: e.thumbImage,
-                                                            alt: ""
-                                                        }), (0, u.jsxs)("div", {
-                                                            className: "portfolio-overlay",
-                                                            onClick: function() {
-                                                                d(x[t]), v(!0)
-                                                            },
-                                                            children: [e.externalLink ? (0, u.jsx)("a", {
-                                                                className: "popup-ajax stretched-link border-0 p-0 ",
-                                                                href: e.externalLink,
-                                                                target: "_blank",
-                                                                rel: "noopener",
-                                                                children: " "
-                                                            }) : (0, u.jsx)("button", {
-                                                                className: "popup-ajax stretched-link border-0 p-0 ",
-                                                                children: " "
-                                                            }), (0, u.jsxs)("div", {
-                                                                className: "portfolio-overlay-details",
-                                                                children: [(0, u.jsxs)("p", {
-                                                                    className: "text-primary text-8",
-                                                                    children: [e.type === w && (0, u.jsx)("i", {
-                                                                        className: "fas fa-file-alt"
-                                                                    }), e.type === b && (0, u.jsx)("i", {
-                                                                        className: "fas fa-image"
-                                                                    }), e.type === _ && (0, u.jsx)("i", {
-                                                                        className: "fas fa-video"
-                                                                    })]
-                                                                }), (0, u.jsx)("h5", {
-                                                                    className: "text-white text-5",
-                                                                    children: null === e || void 0 === e ? void 0 : e.title
-                                                                }), (0, u.jsx)("span", {
-                                                                    className: "text-light",
-                                                                    children: e.shortDesc ? e.shortDesc : "Category"
-                                                                }),
-                                                                    e.projectButton && (0, u.jsx)("div", {
-                                                                            className: "mt-3",
-                                                                            dangerouslySetInnerHTML: { __html: e.projectButton }
-                                                                    })
-                                                            ]
-                                                            })]
-                                                        })]
-                                                    })
-                                                })
-                                            }, t)
-                                        }))
-                                    })
                                 })]
                             })
                         }), m && (0, u.jsx)(O, {

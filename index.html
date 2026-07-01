@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="vendor/animate/animate.min.css" />
   <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" />
-  <link rel="stylesheet" href="styles.prettified.css?v=20260622img" />
+  <link rel="stylesheet" href="styles.prettified.css?v=20260701port2" />
   <style>
     /* Fail-safe: WOW.js hides every ".wow" element with visibility:hidden and
        only reveals it on scroll by adding the "animated" class. If that
@@ -29,31 +29,8 @@
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div>
   </div>
-  <script defer src="script.js?v=20260622home1"></script>
+  <script defer src="script.js?v=20260701port3"></script>
   <script>
-    // Hide broken portfolio thumbnails (and their empty card wrappers) so they
-    // don't show up as stacked broken-image icons on mobile.
-    (function () {
-      function handleBroken(img) {
-        if (!img || img.dataset.brokenHandled === '1') return;
-        img.dataset.brokenHandled = '1';
-        img.style.display = 'none';
-        var box = img.closest('.portfolio-box, .filter-item, .portfolio-img, .card');
-        if (box) box.style.display = 'none';
-      }
-      document.addEventListener('error', function (e) {
-        var t = e.target;
-        if (t && t.tagName === 'IMG') handleBroken(t);
-      }, true);
-      window.addEventListener('load', function () {
-        document.querySelectorAll('img').forEach(function (img) {
-          if (!img.getAttribute('src') || (img.complete && img.naturalWidth === 0)) {
-            handleBroken(img);
-          }
-        });
-      });
-    })();
-
     // Reliable contact-form handler:
     //   1. Always saves the submission to localStorage so the admin
     //      dashboard (dashboard.html) sees it.

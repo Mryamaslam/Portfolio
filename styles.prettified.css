@@ -15716,3 +15716,13 @@ img, video { max-width: 100%; height: auto; }
   object-position: center;
   background: #fff;
 }
+
+/* Portfolio section — trim spacing on mobile after featured project cards */
+@media (max-width: 991.98px) {
+  #portfolio.section {
+    padding-bottom: 2.5rem !important;
+  }
+  #portfolio .row.gy-5.mt-5 {
+    margin-bottom: 0 !important;
+  }
+}
