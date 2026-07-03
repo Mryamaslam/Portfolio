@@ -29846,7 +29846,7 @@
                                 }), (0, u.jsx)("div", {
                                     className: "col-lg-5 text-center align-self-center mb-4 mb-lg-0 order-0 order-lg-1",
                                     children: (0, u.jsx)("div", {
-                                        className: "bg-white rounded-circle d-inline-block p-3 shadow-lg border border-dark border-3 wow zoomIn",
+                                        className: "rounded-circle d-inline-block shadow-lg wow zoomIn",
                                         children: (0, u.jsx)("img", {
                                             className: "img-fluid rounded-circle d-block",
                                             src: "images/home_image1.png?v=20260622home1",
