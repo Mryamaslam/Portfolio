@@ -230,9 +230,29 @@
         'faq': 'faq',
         'client speak': 'testimonial',
         'contact me': 'contact',
+        'contact': 'contact',
+        'hire me': 'contact',
+        'hire me!': 'contact',
         'view my works': 'portfolio',
         'add to contacts': 'bilal-raza.vcf'
       };
+
+      function getLinkHref(el) {
+        var href = el.getAttribute('href');
+        if (href) return href;
+        // react-scroll <a> tags have no href — el.href becomes the current page URL
+        if (el.tagName === 'A' && el.href) {
+          try {
+            var link = new URL(el.href);
+            var here = new URL(window.location.href);
+            if (link.origin === here.origin && link.pathname === here.pathname && !link.hash) {
+              return '';
+            }
+          } catch (_) {}
+          return el.href;
+        }
+        return '';
+      }
 
       function resolveClickTarget(target) {
         var el = target.closest('a, .scroll-down-arrow, .smooth-scroll');
@@ -269,9 +289,9 @@
         var el = resolveClickTarget(e.target);
         if (!el || !document.getElementById('root').contains(el)) return;
 
-        var href = el.getAttribute('href') || el.href || '';
+        var href = getLinkHref(el);
 
-        if (/^https?:\/\//i.test(href)) {
+        if (/^https?:\/\//i.test(href) && href.split('#')[0] !== window.location.href.split('#')[0]) {
           e.preventDefault();
           e.stopImmediatePropagation();
           window.open(href, '_blank', 'noopener,noreferrer');
@@ -310,6 +330,23 @@
           vcfLink.click();
           vcfLink.remove();
           return;
+        }
+
+        if (el.classList.contains('smooth-scroll')) {
+          if (text.indexOf('hire') !== -1 || text.indexOf('contact') !== -1) {
+            if (scrollToId('contact')) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+            return;
+          }
+          if (text.indexOf('portfolio') !== -1 || text.indexOf('view my works') !== -1 || text.indexOf('view project') !== -1) {
+            if (scrollToId('portfolio')) {
+              e.preventDefault();
+              e.stopImmediatePropagation();
+            }
+            return;
+          }
         }
 
         for (var key in SECTIONS) {
