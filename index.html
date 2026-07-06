@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="vendor/animate/animate.min.css" />
   <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" />
-  <link rel="stylesheet" href="styles.prettified.css?v=20260701port2" />
+  <link rel="stylesheet" href="styles.prettified.css?v=20260706mobile1" />
   <style>
     /* Fail-safe: WOW.js hides every ".wow" element with visibility:hidden and
        only reveals it on scroll by adding the "animated" class. If that
@@ -31,10 +31,9 @@
   </div>
   <script defer src="script.js?v=20260703hero1"></script>
   <script>
-    // Reliable contact-form handler:
-    //   1. Saves submission to Vercel API (fallback: localStorage for dashboard).
-    //   2. Sends you an email via Netlify serverless function (reliable).
-    //   3. Always shows success to the visitor; bypasses broken React EmailJS handler.
+    // Contact form — works on GitHub Pages, Netlify, and local preview.
+    // 1) Sends email to bilalrazaupwork@gmail.com (EmailJS, FormSubmit backup on GitHub Pages)
+    // 2) Saves submission to Vercel API for admin dashboard
     (function () {
       var API_BASE = 'https://bilal-portfolio-api.vercel.app';
       var NOTIFY_EMAIL = 'bilalrazaupwork@gmail.com';
@@ -43,6 +42,7 @@
         template_id: 'template_56jyetw',
         user_id:     'j3AoH8cf3nfZVbQVN'
       };
+      var IS_NETLIFY = /\.netlify\.app$/i.test(window.location.hostname);
 
       function showToast(msg, isError) {
         var el = document.createElement('div');
@@ -57,15 +57,115 @@
           'opacity:0;transform:translateY(-8px);transition:opacity .25s,transform .25s;';
         document.body.appendChild(el);
         requestAnimationFrame(function(){ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
-        setTimeout(function(){ el.style.opacity = '0'; el.style.transform = 'translateY(-8px)'; }, 3500);
-        setTimeout(function(){ el.remove(); }, 3900);
+        setTimeout(function(){ el.style.opacity = '0'; el.style.transform = 'translateY(-8px)'; }, 4500);
+        setTimeout(function(){ el.remove(); }, 4900);
       }
 
-      function resetSubmitButton(form) {
+      function setSubmitting(form, busy) {
         var btn = form.querySelector('#submit-btn');
         if (!btn) return;
-        btn.disabled = false;
-        btn.innerHTML = 'Send <span class="ms-3"><i class="fas fa-arrow-right"></i></span>';
+        btn.disabled = !!busy;
+        btn.innerHTML = busy
+          ? 'Sending...'
+          : 'Send <span class="ms-3"><i class="fas fa-arrow-right"></i></span>';
+      }
+
+      function saveLocal(data) {
+        try {
+          var key = 'portfolio_submissions';
+          var list = [];
+          try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
+          if (!Array.isArray(list)) list = [];
+          list.push(data);
+          localStorage.setItem(key, JSON.stringify(list));
+        } catch (_) {}
+      }
+
+      function saveToApi(entry) {
+        return fetch(API_BASE + '/api/submissions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: entry.name,
+            email: entry.email,
+            message: entry.message
+          })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('api');
+          return r.json();
+        });
+      }
+
+      function emailParams(entry) {
+        return {
+          to_email: NOTIFY_EMAIL,
+          user_name: entry.name,
+          user_email: entry.email,
+          from_name: entry.name || 'Website Visitor',
+          from_email: entry.email,
+          reply_to: entry.email,
+          message: entry.message || 'New contact form submission'
+        };
+      }
+
+      function sendEmailJs(entry) {
+        return fetch('https://api.emailjs.com/api/v1.0/email/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            service_id: EMAILJS.service_id,
+            template_id: EMAILJS.template_id,
+            user_id: EMAILJS.user_id,
+            template_params: emailParams(entry)
+          })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('emailjs');
+          return r.text();
+        });
+      }
+
+      // Backup for GitHub Pages — no server needed (activate once via FormSubmit confirmation email)
+      function sendFormSubmit(entry) {
+        return fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFY_EMAIL), {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: entry.name,
+            email: entry.email,
+            message: entry.message,
+            _subject: 'Portfolio contact from ' + (entry.name || 'visitor'),
+            _template: 'table',
+            _captcha: 'false'
+          })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('formsubmit');
+          return r.json();
+        });
+      }
+
+      function sendNetlifyFn(entry) {
+        return fetch('/.netlify/functions/contact-notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: entry.name,
+            email: entry.email,
+            message: entry.message
+          })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('netlify');
+          return r.json();
+        });
+      }
+
+      function sendNotification(entry) {
+        if (IS_NETLIFY) {
+          return sendNetlifyFn(entry).catch(function () { return sendEmailJs(entry); });
+        }
+        return sendEmailJs(entry).catch(function () { return sendFormSubmit(entry); });
       }
 
       document.addEventListener('submit', function (e) {
@@ -78,76 +178,43 @@
         var entry = {
           id: Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8),
           timestamp: new Date().toISOString(),
-          name:    (form.elements['user_name']  || {}).value || '',
-          email:   (form.elements['user_email'] || {}).value || '',
-          message: (form.elements['message']    || {}).value || ''
+          name:    String((form.elements['user_name']  || {}).value || '').trim(),
+          email:   String((form.elements['user_email'] || {}).value || '').trim(),
+          message: String((form.elements['message']    || {}).value || '').trim()
         };
 
-        if (!entry.name && !entry.email && !entry.message) return;
-
-        function saveLocal(data) {
-          try {
-            var key  = 'portfolio_submissions';
-            var list = [];
-            try { list = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
-            if (!Array.isArray(list)) list = [];
-            list.push(data);
-            localStorage.setItem(key, JSON.stringify(list));
-          } catch (_) {}
+        if (!entry.name || !entry.email || !entry.message) {
+          showToast('Please fill in name, email, and message.', true);
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(entry.email)) {
+          showToast('Please enter a valid email address.', true);
+          return;
         }
 
-        fetch(API_BASE + '/api/submissions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: entry.name,
-            email: entry.email,
-            message: entry.message
-          })
-        })
-          .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-          .catch(function () { saveLocal(entry); });
+        setSubmitting(form, true);
 
-        function emailParams() {
-          return {
-            to_email: NOTIFY_EMAIL,
-            user_name: entry.name,
-            user_email: entry.email,
-            from_name: entry.name || 'Website Visitor',
-            from_email: entry.email,
-            reply_to: entry.email,
-            message: entry.message || 'New contact form submission'
-          };
-        }
+        var saved = false;
+        var emailed = false;
 
-        function sendEmailFallback() {
-          return fetch('https://api.emailjs.com/api/v1.0/email/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              service_id: EMAILJS.service_id,
-              template_id: EMAILJS.template_id,
-              user_id: EMAILJS.user_id,
-              template_params: emailParams()
-            })
+        saveToApi(entry)
+          .then(function () { saved = true; })
+          .catch(function () { saveLocal(entry); saved = true; });
+
+        sendNotification(entry)
+          .then(function () { emailed = true; })
+          .catch(function () { emailed = false; })
+          .finally(function () {
+            setSubmitting(form, false);
+            if (emailed || saved) {
+              form.reset();
+              showToast(emailed
+                ? 'Message sent! We will reply to your email soon.'
+                : 'Message saved — email delivery had an issue. Please try again or email us directly.');
+            } else {
+              showToast('Could not send. Please email ' + NOTIFY_EMAIL + ' directly.', true);
+            }
           });
-        }
-
-        fetch('/.netlify/functions/contact-notify', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: entry.name,
-            email: entry.email,
-            message: entry.message
-          })
-        })
-          .then(function (r) { if (!r.ok) throw new Error('notify failed'); })
-          .catch(function () { sendEmailFallback().catch(function () {}); });
-
-        form.reset();
-        resetSubmitButton(form);
-        showToast('Message sent successfully!');
       }, true);
     })();
 

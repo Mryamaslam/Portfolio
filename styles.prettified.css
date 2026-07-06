@@ -15726,3 +15726,131 @@ img, video { max-width: 100%; height: auto; }
     margin-bottom: 0 !important;
   }
 }
+
+/* Sharp screenshots — remove blur, scale, and filter effects */
+.work-gallery-img,
+.card .card-img-top,
+.card .card-img-top.work-gallery-img,
+.card .card-img-top.reviews-img,
+.portfolio .portfolio-box .portfolio-img img,
+.portfolio .portfolio-box .portfolio-img img.portfolio-image,
+#testimonial .reviews-slide-img,
+.react-parallax-bgimage,
+.react-parallax-bgimage img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+}
+.card:hover .work-gallery-img,
+.card:hover .card-img-top,
+.portfolio .portfolio-box:hover .portfolio-img img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  transform: none !important;
+}
+
+/* Tool dashboard grid cards */
+.tool-dash-grid .card-body { padding: 0.65rem 0.75rem; }
+.tool-dash-grid .work-gallery-img {
+  min-height: 120px;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: top left;
+}
+
+/* ===== MOBILE LAYOUT + SMALLER TEXT (index + sub-pages) ===== */
+@media (max-width: 767.98px) {
+  #root .container,
+  body > main.container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    max-width: 100% !important;
+  }
+
+  /* Hero — stop oversized type & fullscreen overflow */
+  #home .text-23 { font-size: 1.85rem !important; line-height: 1.15 !important; }
+  #home .text-8  { font-size: 1.2rem !important; }
+  #home .text-5  { font-size: 0.88rem !important; }
+  #home .hero-content.d-flex.fullscreen,
+  #home .hero-content.fullscreen,
+  #home .hero-content.d-flex.fullscreen-with-header {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 4.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  .hero-wrap { min-height: 0 !important; }
+
+  /* Section headings — smaller on phones */
+  .text-10 { font-size: 1.45rem !important; line-height: 1.25 !important; }
+  .text-11 { font-size: 1.55rem !important; }
+  .text-12 { font-size: 1.65rem !important; }
+  .text-6  { font-size: 1.05rem !important; }
+  .text-5  { font-size: 0.9rem !important; line-height: 1.55 !important; }
+  .text-4  { font-size: 0.85rem !important; }
+  .text-3  { font-size: 0.9rem !important; }
+
+  /* Portfolio featured cards — single column, compact */
+  #portfolio .row.gy-5 > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  #portfolio .featured-box {
+    padding: 0.85rem 0.5rem !important;
+    margin-bottom: 0.5rem;
+  }
+  #portfolio .featured-box h3.text-6 {
+    font-size: 0.92rem !important;
+    line-height: 1.3;
+    margin-bottom: 0.5rem !important;
+  }
+  #portfolio .featured-box .text-muted {
+    font-size: 0.78rem !important;
+    line-height: 1.45;
+  }
+  #portfolio .featured-box-icon.text-13 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem;
+  }
+  #portfolio .featured-box .btn {
+    font-size: 0.78rem !important;
+    padding: 0.35rem 0.7rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* About / services body copy */
+  #about .text-5,
+  #services .text-5,
+  #resume .text-5,
+  #contact .text-5 {
+    font-size: 0.88rem !important;
+  }
+
+  /* Navbar — fit narrow screens */
+  #header .navbar-brand { font-size: 0.95rem; }
+  #header .navbar-nav .nav-link { font-size: 0.88rem; padding: 0.4rem 0.6rem; }
+
+  /* FAQ accordion */
+  #faq .accordion-button { font-size: 0.9rem !important; padding: 0.9rem 1rem 0.9rem 1.75rem; }
+  #faq .accordion-body { font-size: 0.85rem !important; }
+
+  /* Footer */
+  #footer { padding: 2rem 0 !important; font-size: 0.85rem; }
+  #footer .nav .nav-link { font-size: 0.82rem; }
+
+  /* Sub-page dashboard grid */
+  .tool-dash-grid .col-6 { flex: 0 0 50%; max-width: 50%; }
+  .tool-dash-grid .work-gallery-img { max-height: 140px; }
+}
+
+@media (max-width: 575.98px) {
+  section.section { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+  .text-10 { font-size: 1.3rem !important; }
+  #home .text-23 { font-size: 1.6rem !important; }
+  main.container h1.text-6 { font-size: 1.15rem !important; }
+  main.container .text-3 { font-size: 0.82rem !important; }
+  .tool-dash-grid .col-6 { flex: 0 0 100%; max-width: 100%; }
+  .tool-dash-grid .work-gallery-img { max-height: 220px; }
+}
