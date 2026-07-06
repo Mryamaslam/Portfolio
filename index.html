@@ -32,15 +32,12 @@
   <script defer src="script.js?v=20260703hero1"></script>
   <script>
     // Reliable contact-form handler:
-    //   1. Always saves the submission to localStorage so the admin
-    //      dashboard (dashboard.html) sees it.
-    //   2. Attempts to email via EmailJS in the background (silently,
-    //      ignores errors so the visitor never sees "Something went wrong").
-    //   3. Always shows a green "Message sent successfully" toast, resets
-    //      the form, and bypasses the React handler that was throwing the
-    //      EmailJS error.
+    //   1. Saves submission to Vercel API (fallback: localStorage for dashboard).
+    //   2. Sends you an email via Netlify serverless function (reliable).
+    //   3. Always shows success to the visitor; bypasses broken React EmailJS handler.
     (function () {
       var API_BASE = 'https://bilal-portfolio-api.vercel.app';
+      var NOTIFY_EMAIL = 'bilalrazaupwork@gmail.com';
       var EMAILJS = {
         service_id:  'service_2ph8u3w',
         template_id: 'template_56jyetw',
@@ -111,22 +108,42 @@
           .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
           .catch(function () { saveLocal(entry); });
 
-        try {
-          fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        function emailParams() {
+          return {
+            to_email: NOTIFY_EMAIL,
+            user_name: entry.name,
+            user_email: entry.email,
+            from_name: entry.name || 'Website Visitor',
+            from_email: entry.email,
+            reply_to: entry.email,
+            message: entry.message || 'New contact form submission'
+          };
+        }
+
+        function sendEmailFallback() {
+          return fetch('https://api.emailjs.com/api/v1.0/email/send', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              service_id:  EMAILJS.service_id,
+              service_id: EMAILJS.service_id,
               template_id: EMAILJS.template_id,
-              user_id:     EMAILJS.user_id,
-              template_params: {
-                user_name:  entry.name,
-                user_email: entry.email,
-                message:    entry.message
-              }
+              user_id: EMAILJS.user_id,
+              template_params: emailParams()
             })
-          }).catch(function () { /* silent — already saved to dashboard */ });
-        } catch (_) {}
+          });
+        }
+
+        fetch('/.netlify/functions/contact-notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: entry.name,
+            email: entry.email,
+            message: entry.message
+          })
+        })
+          .then(function (r) { if (!r.ok) throw new Error('notify failed'); })
+          .catch(function () { sendEmailFallback().catch(function () {}); });
 
         form.reset();
         resetSubmitButton(form);
