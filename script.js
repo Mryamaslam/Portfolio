@@ -22155,7 +22155,7 @@
                                     className: "col-lg-8 text-center text-lg-start wow fadeInUp",
                                     children: [(0, u.jsx)("p", {
                                         className: "text-5",
-                                        children: "I am a consultant specializing in Email Marketing,Meta Ads, Google Ads, LinkedIn Outreach, Upwork Bidding, and List Building. I am passionate about helping businesses grow their client base and boost conversions through strategic communication and data-driven targeting. Over the years, I have helped numerous clients achieve measurable results with personalized outreach campaigns and effective lead-generation systems — always delivered on time and within budget."
+                                        children: "I am a consultant specializing in Email Marketing,Meta Ads, Google Ads, LinkedIn Outreach, Upwork Bidding, and List Building. I am passionate about helping businesses grow their client base and boost conversions through strategic communication and data-driven targeting. Over the years, I have helped numerous clients achieve measurable results with personalized outreach campaigns and effective lead-generation systems - always delivered on time and within budget."
                                     })]
                                 }), (0, u.jsx)("div", {
                                     className: "col-lg-4 mt-4 mt-lg-0 wow fadeInUp",
@@ -22232,11 +22232,11 @@
                 f = function() {
                     var e = [{
                         name: "Email Marketing that Converts",
-                        desc: "From crafting engaging email sequences to setting up automated campaigns, I'll help you turn subscribers into loyal customers — driving measurable sales and brand engagement.",
+                        desc: "From crafting engaging email sequences to setting up automated campaigns, I'll help you turn subscribers into loyal customers - driving measurable sales and brand engagement.",
                         icon: "fas fa-envelope"
                     }, {
                         name: "Lead Generation & Prospecting",
-                        desc: "I specialize in building accurate, high-quality B2B leads using tools like LinkedIn Sales Navigator, Apollo.io, and Smartlead — ensuring your sales pipeline is always full of opportunities.",
+                        desc: "I specialize in building accurate, high-quality B2B leads using tools like LinkedIn Sales Navigator, Apollo.io, and Smartlead - ensuring your sales pipeline is always full of opportunities.",
                         icon: "fas fa-bullseye"
                     }, {
                         name: "LinkedIn Automation & Outreach",
@@ -22244,7 +22244,7 @@
                         icon: "fab fa-linkedin"
                     }, {
                         name: "Upwork Profile Optimization & Bidding Strategy",
-                        desc: "Whether you're a freelancer or an agency, I can help you refine your Upwork profile, craft winning proposals, and increase your job success score — turning browsing clients into paying ones.",
+                        desc: "Whether you're a freelancer or an agency, I can help you refine your Upwork profile, craft winning proposals, and increase your job success score - turning browsing clients into paying ones.",
                         icon: "fas fa-chart-line"
                     }, {
                         name: "Sales & Business Development",
@@ -22252,7 +22252,7 @@
                         icon: "fas fa-handshake"
                     }, {
                         name: "Meta & Google Ads",
-                        desc: "I plan, launch, and optimize performance-driven campaigns on Meta and Google Ads — from keyword and audience targeting to analytics and continuous A/B testing for better ROI.",
+                        desc: "I plan, launch, and optimize performance-driven campaigns on Meta and Google Ads - from keyword and audience targeting to analytics and continuous A/B testing for better ROI.",
                         icon: "fas fa-bullhorn"
                     }];
                     return (0, u.jsx)("section", {
@@ -22985,7 +22985,7 @@
                         client: "Various Upwork Clients",
                         technologies: "Email, Automation",
                         industry: "Marketing",
-                        date: "—",
+                        date: "-",
                         url: { name: "Upwork", link: "https://www.upwork.com/" },
                         sliderImages: []
                     },
@@ -23011,7 +23011,7 @@
                         client: "Various Upwork Clients",
                         technologies: "LinkedIn, Automation",
                         industry: "Marketing",
-                        date: "—",
+                        date: "-",
                         url: { name: "Upwork", link: "https://www.upwork.com/" },
                         sliderImages: []
                     },
@@ -23035,7 +23035,7 @@
                         client: "Various Upwork Clients",
                         technologies: "Profile, Bidding",
                         industry: "Freelance",
-                        date: "—",
+                        date: "-",
                         url: { name: "Upwork", link: "https://www.upwork.com/" },
                         sliderImages: []
                     },
@@ -23058,7 +23058,7 @@
                         client: "Various Clients",
                         technologies: "Meta Ads, Google Ads, Analytics",
                         industry: "Marketing",
-                        date: "—",
+                        date: "-",
                         url: { name: "Portfolio", link: "meta-google-ads.html" },
                         sliderImages: []
                     },

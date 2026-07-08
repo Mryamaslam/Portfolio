@@ -590,7 +590,7 @@ progress {
   margin-top:-1rem
 }
 .blockquote-footer:before {
-  content:"— "
+  content:"- "
 }
 .img-fluid,.img-thumbnail {
   height:auto;
@@ -15558,7 +15558,7 @@ img, video { max-width: 100%; height: auto; }
   .btn.btn-warning        { padding: .4rem .9rem; font-size: .9rem; }
 }
 
-/* Lightbox / image preview overlay — make image fit better and ensure
+/* Lightbox / image preview overlay - make image fit better and ensure
    the "Back to Page" button doesn't overlap the image on phones. */
 .hover-overlay img {
   max-width: min(95vw, 100%);
@@ -15648,7 +15648,7 @@ img, video { max-width: 100%; height: auto; }
   #faq img.img-fluid { margin-right: 0 !important; margin-left: 0 !important; }
 }
 
-/* Client reviews carousel — testimonial section */
+/* Client reviews carousel - testimonial section */
 #testimonial .reviews-slider {
   max-width: 1100px;
   padding: 0 48px;
@@ -15689,7 +15689,7 @@ img, video { max-width: 100%; height: auto; }
   }
 }
 
-/* Work portfolio galleries — keep screenshots sharp (no crop/upscale blur) */
+/* Work portfolio galleries - keep screenshots sharp (no crop/upscale blur) */
 .work-gallery-img,
 .card .card-img-top.work-gallery-img,
 .card .card-img-top.reviews-img {
@@ -15717,7 +15717,7 @@ img, video { max-width: 100%; height: auto; }
   background: #fff;
 }
 
-/* Portfolio section — trim spacing on mobile after featured project cards */
+/* Portfolio section - trim spacing on mobile after featured project cards */
 @media (max-width: 991.98px) {
   #portfolio.section {
     padding-bottom: 2.5rem !important;
@@ -15727,7 +15727,7 @@ img, video { max-width: 100%; height: auto; }
   }
 }
 
-/* Sharp screenshots — remove blur, scale, and filter effects */
+/* Sharp screenshots - remove blur, scale, and filter effects */
 .work-gallery-img,
 .card .card-img-top,
 .card .card-img-top.work-gallery-img,
@@ -15769,7 +15769,7 @@ img, video { max-width: 100%; height: auto; }
     max-width: 100% !important;
   }
 
-  /* Hero — stop oversized type & fullscreen overflow */
+  /* Hero - stop oversized type & fullscreen overflow */
   #home .text-23 { font-size: 1.85rem !important; line-height: 1.15 !important; }
   #home .text-8  { font-size: 1.2rem !important; }
   #home .text-5  { font-size: 0.88rem !important; }
@@ -15783,7 +15783,7 @@ img, video { max-width: 100%; height: auto; }
   }
   .hero-wrap { min-height: 0 !important; }
 
-  /* Section headings — smaller on phones */
+  /* Section headings - smaller on phones */
   .text-10 { font-size: 1.45rem !important; line-height: 1.25 !important; }
   .text-11 { font-size: 1.55rem !important; }
   .text-12 { font-size: 1.65rem !important; }
@@ -15792,7 +15792,7 @@ img, video { max-width: 100%; height: auto; }
   .text-4  { font-size: 0.85rem !important; }
   .text-3  { font-size: 0.9rem !important; }
 
-  /* Portfolio featured cards — single column, compact */
+  /* Portfolio featured cards - single column, compact */
   #portfolio .row.gy-5 > [class*="col-"] {
     flex: 0 0 100%;
     max-width: 100%;
@@ -15828,7 +15828,7 @@ img, video { max-width: 100%; height: auto; }
     font-size: 0.88rem !important;
   }
 
-  /* Navbar — fit narrow screens */
+  /* Navbar - fit narrow screens */
   #header .navbar-brand { font-size: 0.95rem; }
   #header .navbar-nav .nav-link { font-size: 0.88rem; padding: 0.4rem 0.6rem; }
 

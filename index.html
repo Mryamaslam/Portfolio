@@ -31,7 +31,7 @@
   </div>
   <script defer src="script.js?v=20260703hero1"></script>
   <script>
-    // Contact form — works on GitHub Pages, Netlify, and local preview.
+    // Contact form - works on GitHub Pages, Netlify, and local preview.
     // 1) Sends email to bilalrazaupwork@gmail.com (EmailJS, FormSubmit backup on GitHub Pages)
     // 2) Saves submission to Vercel API for admin dashboard
     (function () {
@@ -124,7 +124,7 @@
         });
       }
 
-      // Backup for GitHub Pages — no server needed (activate once via FormSubmit confirmation email)
+      // Backup for GitHub Pages - no server needed (activate once via FormSubmit confirmation email)
       function sendFormSubmit(entry) {
         return fetch('https://formsubmit.co/ajax/' + encodeURIComponent(NOTIFY_EMAIL), {
           method: 'POST',
@@ -210,7 +210,7 @@
               form.reset();
               showToast(emailed
                 ? 'Message sent! We will reply to your email soon.'
-                : 'Message saved — email delivery had an issue. Please try again or email us directly.');
+                : 'Message saved - email delivery had an issue. Please try again or email us directly.');
             } else {
               showToast('Could not send. Please email ' + NOTIFY_EMAIL + ' directly.', true);
             }
@@ -240,7 +240,7 @@
       function getLinkHref(el) {
         var href = el.getAttribute('href');
         if (href) return href;
-        // react-scroll <a> tags have no href — el.href becomes the current page URL
+        // react-scroll <a> tags have no href - el.href becomes the current page URL
         if (el.tagName === 'A' && el.href) {
           try {
             var link = new URL(el.href);
