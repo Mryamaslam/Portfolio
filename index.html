@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="vendor/animate/animate.min.css" />
   <link rel="stylesheet" href="vendor/font-awesome/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" />
-  <link rel="stylesheet" href="styles.prettified.css?v=20260715portfolio1" />
+  <link rel="stylesheet" href="styles.prettified.css?v=20260715sep2" />
   <style>
     /* Fail-safe: WOW.js hides every ".wow" element with visibility:hidden and
        only reveals it on scroll by adding the "animated" class. If that
@@ -38,6 +38,15 @@
     #portfolio .featured-box > .btn {
       margin-top: auto !important;
     }
+    /* Clear separation between Services (grey) and Portfolio (white) */
+    #services.section {
+      background-color: #e9edf2 !important;
+    }
+    #portfolio.section {
+      background-color: #ffffff !important;
+      border-top: 1px solid rgba(15, 23, 42, .08);
+      border-bottom: 1px solid rgba(15, 23, 42, .08);
+    }
   </style>
 </head>
 <body>
@@ -47,7 +56,7 @@
       <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div>
   </div>
-  <script defer src="script.js?v=20260715sep1"></script>
+  <script defer src="script.js?v=20260715sep2"></script>
   <script>
     // Contact form, works on GitHub Pages, Netlify, and local preview.
     // 1) Sends email to bilalrazaupwork@gmail.com (EmailJS, FormSubmit backup on GitHub Pages)
