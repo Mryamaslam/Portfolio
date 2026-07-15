@@ -12,6 +12,28 @@
     .hover-overlay img { max-width: 95vw; max-height: 95vh; box-shadow: 0 10px 24px rgba(0,0,0,.4); border-radius: 8px; display: block; background: #fff; }
     .hover-overlay .overlay-back { position: absolute; top: 12px; right: 12px; }
     .metric-pill { display: inline-block; background: #fff3cd; color: #856404; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+    .ads-card-grid > [class*="col-"] { display: flex; }
+    .ads-card-grid .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+    }
+    .ads-card-grid .card-img-top {
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      object-fit: contain;
+      object-position: center;
+      background: #f4f5f8;
+      padding: 8px;
+    }
+    .ads-card-grid .card-body {
+      flex: 1 1 auto;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+    }
+    .ads-card-grid .card-body p { margin-top: auto; }
   </style>
   <meta name="description" content="Meta and Google Ads campaign dashboards, ROAS, lead gen, purchases, and full funnel results.">
 </head>
@@ -23,7 +45,7 @@
 
     <section class="mt-5">
       <h2 class="h4 fw-600 mb-4">Meta Ads, Purchase ROAS &amp; Ecommerce</h2>
-      <div class="row g-4">
+      <div class="row g-4 ads-card-grid">
         <div class="col-md-8 col-lg-7">
           <div class="card shadow-sm h-100">
             <img src="meta google ads/meta-shopping-572-purchases.png" class="card-img-top work-gallery-img" alt="Meta Advantage+ shopping campaign with 572 purchases and 2.16 ROAS" loading="lazy" decoding="async">
@@ -38,7 +60,7 @@
 
     <section class="mt-5">
       <h2 class="h4 fw-600 mb-4">Meta Ads, Lead Generation</h2>
-      <div class="row g-4">
+      <div class="row g-4 ads-card-grid">
         <div class="col-md-6 col-lg-4">
           <div class="card shadow-sm h-100">
             <img src="meta google ads/meta-website-leads-282.png" class="card-img-top work-gallery-img" alt="Meta Ads website leads campaign - 282 leads at $22.54 cost per result" loading="lazy" decoding="async">
@@ -71,7 +93,7 @@
 
     <section class="mt-5">
       <h2 class="h4 fw-600 mb-4">Google Ads Performance</h2>
-      <div class="row g-4">
+      <div class="row g-4 ads-card-grid">
         <div class="col-md-6 col-lg-6">
           <div class="card shadow-sm h-100">
             <img src="meta google ads/google-ads-roas-14x.png" class="card-img-top work-gallery-img" alt="Google Ads campaign with 14.90 conversion value to cost ratio" loading="lazy" decoding="async">
@@ -86,7 +108,7 @@
 
     <section class="mt-5">
       <h2 class="h4 fw-600 mb-4">Full Funnel Results, Revenue &amp; Attribution</h2>
-      <div class="row g-4">
+      <div class="row g-4 ads-card-grid">
         <div class="col-md-6 col-lg-6">
           <div class="card shadow-sm h-100">
             <img src="meta google ads/shopify-sales-564k.png" class="card-img-top work-gallery-img" alt="Shopify analytics, $564,526 total sales and 11,299 orders" loading="lazy" decoding="async">
