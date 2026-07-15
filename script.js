@@ -22155,7 +22155,7 @@
                                     className: "col-lg-8 text-center text-lg-start wow fadeInUp",
                                     children: [(0, u.jsx)("p", {
                                         className: "text-5",
-                                        children: "I am a consultant specializing in Email Marketing,Meta Ads, Google Ads, LinkedIn Outreach, Upwork Bidding, and List Building. I am passionate about helping businesses grow their client base and boost conversions through strategic communication and data-driven targeting. Over the years, I have helped numerous clients achieve measurable results with personalized outreach campaigns and effective lead-generation systems, always delivered on time and within budget."
+                                        children: "I am a consultant specializing in Email Marketing, Meta Ads, Google Ads, LinkedIn Outreach, Upwork Bidding, and List Building. I am passionate about helping businesses grow their client base and boost conversions through strategic communication and data driven targeting. Over the years, I have helped numerous clients achieve measurable results with personalized outreach campaigns and effective lead generation systems, always delivered on time and within budget."
                                     })]
                                 }), (0, u.jsx)("div", {
                                     className: "col-lg-4 mt-4 mt-lg-0 wow fadeInUp",
@@ -22236,11 +22236,11 @@
                         icon: "fas fa-envelope"
                     }, {
                         name: "Lead Generation & Prospecting",
-                        desc: "I specialize in building accurate, high-quality B2B leads using tools like LinkedIn Sales Navigator, Apollo.io, and Smartlead, ensuring your sales pipeline is always full of opportunities.",
+                        desc: "I specialize in building accurate, high quality B2B leads using tools like LinkedIn Sales Navigator, Apollo.io, and Smartlead, ensuring your sales pipeline is always full of opportunities.",
                         icon: "fas fa-bullseye"
                     }, {
                         name: "LinkedIn Automation & Outreach",
-                        desc: "Reach your target audience efficiently with AI-powered LinkedIn automation campaigns. I design and execute smart workflows that build genuine connections and boost response rates.",
+                        desc: "Reach your target audience efficiently with AI powered LinkedIn automation campaigns. I design and execute smart workflows that build genuine connections and boost response rates.",
                         icon: "fab fa-linkedin"
                     }, {
                         name: "Upwork Profile Optimization & Bidding Strategy",
@@ -22252,7 +22252,7 @@
                         icon: "fas fa-handshake"
                     }, {
                         name: "Meta & Google Ads",
-                        desc: "I plan, launch, and optimize performance-driven campaigns on Meta and Google Ads, from keyword and audience targeting to analytics and continuous A/B testing for better ROI.",
+                        desc: "I plan, launch, and optimize performance driven campaigns on Meta and Google Ads, from keyword and audience targeting to analytics and continuous A/B testing for better ROI.",
                         icon: "fas fa-bullhorn"
                     }];
                     return (0, u.jsx)("section", {
@@ -22765,7 +22765,7 @@
                             title: "LIVELY",
                             type: w,
                             document: {
-                                projectInfo: "One of the world\u2019s biggest online store of women products. RoR based stack, development and enhancements to existing code-base. we developed custom web app for automation of their ambassadors program to increase sales . which help to quickly get commision based sales and track them according. Custom Web portal for managing their Vendors and inventory , so that they have enough inventory topped up always.Fetching their Shopify orders and custom reporting on sales & products.",
+                                projectInfo: "One of the world\u2019s biggest online store of women products. RoR based stack, development and enhancements to existing code base. we developed custom web app for automation of their ambassadors program to increase sales . which help to quickly get commision based sales and track them according. Custom Web portal for managing their Vendors and inventory , so that they have enough inventory topped up always.Fetching their Shopify orders and custom reporting on sales & products.",
                                 client: "Lively",
                                 technologies: "ROR, React",
                                 industry: "IT",
@@ -22833,7 +22833,7 @@
                             title: "Halyard",
                             type: w,
                             document: {
-                                projectInfo: "Halyard, part of the Owens & Minor Global Products Division, is focused on moving care forward. Our $1.2 billion portfolio of market-leading brands includes HALYARD, MEDICHOICE and MEDICAL ACTION are sold in more than 90 countries. Halyard\u2019s broad portfolio offers the right product for each need, backed by best-in-class clinical expertise and more support at points of care. Our product standardization opportunities combined with supply chain expertise help drive efficiencies and protect healthcare providers from risks and disruptions in care.",
+                                projectInfo: "Halyard, part of the Owens & Minor Global Products Division, is focused on moving care forward. Our $1.2 billion portfolio of market leading brands includes HALYARD, MEDICHOICE and MEDICAL ACTION are sold in more than 90 countries. Halyard\u2019s broad portfolio offers the right product for each need, backed by best in class clinical expertise and more support at points of care. Our product standardization opportunities combined with supply chain expertise help drive efficiencies and protect healthcare providers from risks and disruptions in care.",
                                 client: "Halyard",
                                 technologies: "iOS, HTML5, CSS3, PHP, Java",
                                 industry: "IT",
@@ -22968,7 +22968,7 @@
                     // Added three external-link portfolio cards
                     x.push({
                     title: "Email Marketing Projects ",
-                    shortDesc: "Full-stack email campaigns, automations, and reporting",
+                    shortDesc: "Full stack email campaigns, automations, and reporting",
 
                     // 👇 Added Project button
                         projectButton: (0, u.jsx)("a", {
@@ -23020,7 +23020,7 @@
 
                     x.push({
                     title: "Upwork Profile Optimization and Bidding Projects",
-                    shortDesc: "Profile tuning, proposal strategy and win-rate improvement",
+                    shortDesc: "Profile tuning, proposal strategy and win rate improvement",
  // 👇 Added Project button
                         projectButton: (0, u.jsx)("a", {
                             href: "contact",
@@ -23148,7 +23148,7 @@
       href: "linkedin-automation.html",
       className: "btn btn-primary rounded-0 smooth-scroll wow rubberBand mt-3",
       "data-wow-delay": "1s",
-      children: "View Project"
+      children: "View Projects"
     }),]
                                             })
                                         })
@@ -23187,11 +23187,11 @@
                                             rel: "noopener",
                                             children: (0, u.jsxs)("div", {
                                                 className: "featured-box text-center px-md-4",
-                                                children: [(0, u.jsxs)("div", { className: "featured-box-icon text-primary text-13", children: [" ", (0, u.jsx)("i", { className: "fas fa-briefcase" })] }), (0, u.jsx)("h3", { className: "text-6 fw-600 mb-3", children: "Upwork Profile Optimization and Bidding Projects" }), (0, u.jsx)("p", { className: "text-muted mb-0", children: "Profile tuning, proposal strategy and win-rate improvement" }), (0, u.jsx)("a", {
+                                                children: [(0, u.jsxs)("div", { className: "featured-box-icon text-primary text-13", children: [" ", (0, u.jsx)("i", { className: "fas fa-briefcase" })] }), (0, u.jsx)("h3", { className: "text-6 fw-600 mb-3", children: "Upwork Profile Optimization and Bidding Projects" }), (0, u.jsx)("p", { className: "text-muted mb-0", children: "Profile tuning, proposal strategy and win rate improvement" }), (0, u.jsx)("a", {
                                                     href: "upwork-profile-optimization-bidding.html",
                                                     className: "btn btn-primary rounded-0 wow rubberBand mt-3",
                                                     "data-wow-delay": "1s",
-                                                    children: "View Project"
+                                                    children: "View Projects"
                                                 })]
                                             })
                                         })
@@ -28731,7 +28731,7 @@
                                         children: "Let's get in touch"
                                     }), (0, u.jsx)("p", {
                                         className: "text-5 mb-5",
-                                        children: "I enjoy discussing new projects and design challenges. Please share as much info, as possible so we can get the most out of our first catch-up."
+                                        children: "I enjoy discussing new projects and design challenges. Please share as much info, as possible so we can get the most out of our first catch up."
                                     }), (0, u.jsx)("h3", {
                                         className: "text-5 fw-600",
                                         children: "Living In:"
@@ -28896,29 +28896,24 @@
                 rs = function() {
                     return (0, u.jsx)("section", {
                         children: (0, u.jsxs)("div", {
-                            className: "hero-wrap",
+                            className: "hero-wrap bg-dark",
                             children: [(0, u.jsx)("div", {
                                 className: "hero-mask opacity-8 bg-dark"
-                            }), (0, u.jsx)(ns.Parallax, {
-                                bgImage: "images/intro-bg-2.jpg",
-                                bgImageAlt: "Intro",
-                                strength: 200,
-                                children: (0, u.jsx)("div", {
-                                    className: "hero-content section",
-                                    children: (0, u.jsxs)("div", {
-                                        className: "container text-center py-5 wow fadeInUp",
-                                        children: [(0, u.jsx)("h2", {
-                                            className: "text-10 fw-600 text-white mb-5",
-                                            children: "Interested in working with me?"
-                                        }), (0, u.jsx)(ts.rU, {
-                                            className: "btn btn-primary rounded-0 smooth-scroll wow rubberBand",
-                                            "data-wow-delay": "1s",
-                                            smooth: "easeInOutQuint",
-                                            duration: es,
-                                            to: "contact",
-                                            children: "Hire Me!"
-                                        }), " "]
-                                    })
+                            }), (0, u.jsx)("div", {
+                                className: "hero-content section",
+                                children: (0, u.jsxs)("div", {
+                                    className: "container text-center py-5 wow fadeInUp",
+                                    children: [(0, u.jsx)("h2", {
+                                        className: "text-10 fw-600 text-white mb-5",
+                                        children: "Interested in working with me?"
+                                    }), (0, u.jsx)(ts.rU, {
+                                        className: "btn btn-primary rounded-0 smooth-scroll wow rubberBand",
+                                        "data-wow-delay": "1s",
+                                        smooth: "easeInOutQuint",
+                                        duration: es,
+                                        to: "contact",
+                                        children: "Hire Me!"
+                                    }), " "]
                                 })
                             })]
                         })
@@ -29474,10 +29469,10 @@
                         answer: "I help businesses grow through Email Marketing, Lead Generation, LinkedIn Automation & Outreach, and performance advertising on Meta & Google Ads. I set up complete funnels from targeting and messaging to analytics and optimization."
                     }, {
                         question: "How do you measure success and ROI?",
-                        answer: "I track KPIs like open rate, CTR, conversion rate, CPL/CAC, ROAS, and pipeline growth. You’ll get transparent weekly reports and dashboards with insights and next-step action plans to continuously improve results."
+                        answer: "I track KPIs like open rate, CTR, conversion rate, CPL/CAC, ROAS, and pipeline growth. You’ll get transparent weekly reports and dashboards with insights and next step action plans to continuously improve results."
                     }, {
                         question: "What is your approach to lead generation?",
-                        answer: "I use tools like LinkedIn Sales Navigator, Apollo.io, and smart outbound/email sequences. Leads are segmented, qualified, and nurtured with value-driven messaging, ensuring quality conversations and higher conversion rates."
+                        answer: "I use tools like LinkedIn Sales Navigator, Apollo.io, and smart outbound/email sequences. Leads are segmented, qualified, and nurtured with value driven messaging, ensuring quality conversations and higher conversion rates."
                     }, {
                         question: "How do you plan and manage ad campaigns?",
                         answer: "I start with audience and keyword research, craft compelling creatives, and structure campaigns for efficient spend. I run A/B tests, optimize budgets and bids, and use pixel/conversion tracking to maximize ROAS on Meta & Google Ads."
