@@ -12,6 +12,29 @@
     .hover-overlay img { max-width: 96vw; max-height: 82vh; box-shadow: 0 10px 24px rgba(0,0,0,.4); border-radius: 8px; display: block; background: #fff; filter: none !important; }
     .hover-overlay .overlay-back { margin-top: 12px; }
     .metric-pill { display: inline-block; background: #fff3cd; color: #856404; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; margin-bottom: 8px; }
+    .tool-dash-grid > [class*="col-"] { display: flex; }
+    .tool-dash-grid .card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      overflow: hidden;
+    }
+    .tool-dash-grid .card-img-top {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center top;
+      height: auto;
+      background: #111;
+    }
+    .tool-dash-grid .card-body {
+      flex: 1 0 auto;
+      min-height: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12px 14px;
+    }
   </style>
 </head>
 <body class="bg-light">
@@ -25,7 +48,7 @@
       <div class="row g-4">
         <div class="col-12">
           <div class="card shadow-sm h-100">
-            <img src="email_portfolio/instantly-analytics-main.png" class="card-img-top work-gallery-img" alt="Instantly.ai analytics dashboard - 449.8K emails sent, 44% open rate, 97 opportunities worth $987,467" loading="eager" decoding="async">
+            <img src="email_portfolio/instantly-analytics-main.jpg" class="card-img-top work-gallery-img" alt="Instantly.ai analytics dashboard - 449.8K emails sent, 44% open rate, 97 opportunities worth $987,467" loading="eager" decoding="async">
             <div class="card-body">
               <span class="metric-pill">449.8K sent · 44% open · 97 opportunities · $987,467</span>
               <p class="card-text text-muted small mb-0">Primary Instantly.ai analytics view - 12-month cold email performance with sent volume, open/reply rates, and pipeline value across active client accounts.</p>
@@ -34,7 +57,7 @@
         </div>
         <div class="col-12">
           <div class="card shadow-sm h-100">
-            <img src="email_portfolio/instantly-analytics-results.png" class="card-img-top work-gallery-img" alt="Instantly.ai campaign results - 217.3K sent, 69.8% open rate, 57 opportunities worth $149,500" loading="lazy" decoding="async">
+            <img src="email_portfolio/instantly-analytics-results.jpg" class="card-img-top work-gallery-img" alt="Instantly.ai campaign results - 217.3K sent, 69.8% open rate, 57 opportunities worth $149,500" loading="lazy" decoding="async">
             <div class="card-body">
               <span class="metric-pill">217.3K sent · 69.8% open · 57 opportunities · $149,500</span>
               <p class="card-text text-muted small mb-0">High performing Instantly.ai outreach account, strong open rates and qualified opportunities tracked in the analytics dashboard.</p>
@@ -49,7 +72,7 @@
       <div class="row g-3 g-md-4 tool-dash-grid">
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/instantly-analytics-main.png" class="card-img-top work-gallery-img" alt="Instantly.ai analytics dashboard - 449.8K sent, 97 opportunities" loading="lazy" decoding="async">
+            <img src="dashboards/instantly-analytics-main.jpg" class="card-img-top work-gallery-img" alt="Instantly.ai analytics dashboard - 449.8K sent, 97 opportunities" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Instantly.ai Analytics</h3>
               <p class="card-text text-muted small mb-0">Main client dashboard · 449.8K sent · $987,467 pipeline</p>
@@ -58,7 +81,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/instantly-analytics-results.png" class="card-img-top work-gallery-img" alt="Instantly.ai campaign results - 69.8% open rate, 57 opportunities" loading="lazy" decoding="async">
+            <img src="dashboards/instantly-analytics-results.jpg" class="card-img-top work-gallery-img" alt="Instantly.ai campaign results - 69.8% open rate, 57 opportunities" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Instantly.ai Results</h3>
               <p class="card-text text-muted small mb-0">High open rate · 69.8% open · $149,500 opportunities</p>
@@ -67,7 +90,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/instantly.png" class="card-img-top work-gallery-img" alt="Instantly.ai cold email automation dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/instantly.jpg" class="card-img-top work-gallery-img" alt="Instantly.ai cold email automation dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Instantly.ai</h3>
               <p class="card-text text-muted small mb-0">Cold email automation &amp; analytics</p>
@@ -76,7 +99,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/mailshake.png" class="card-img-top work-gallery-img" alt="Mailshake email outreach dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/mailshake.jpg" class="card-img-top work-gallery-img" alt="Mailshake email outreach dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Mailshake</h3>
               <p class="card-text text-muted small mb-0">Outreach analytics &amp; deliverability</p>
@@ -85,7 +108,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/smartlead.png" class="card-img-top work-gallery-img" alt="Smartlead campaign analytics dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/smartlead.jpg" class="card-img-top work-gallery-img" alt="Smartlead campaign analytics dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Smartlead</h3>
               <p class="card-text text-muted small mb-0">Cold email automation</p>
@@ -94,7 +117,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/hubspot.png" class="card-img-top work-gallery-img" alt="HubSpot deals performance dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/hubspot.jpg" class="card-img-top work-gallery-img" alt="HubSpot deals performance dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">HubSpot</h3>
               <p class="card-text text-muted small mb-0">CRM &amp; pipeline reporting</p>
@@ -103,7 +126,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/mailchimp.png" class="card-img-top work-gallery-img" alt="Mailchimp campaign performance dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/mailchimp.jpg" class="card-img-top work-gallery-img" alt="Mailchimp campaign performance dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Mailchimp</h3>
               <p class="card-text text-muted small mb-0">Email &amp; campaign metrics</p>
@@ -112,7 +135,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/saleshandy.png" class="card-img-top work-gallery-img" alt="SalesHandy email campaign dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/saleshandy.jpg" class="card-img-top work-gallery-img" alt="SalesHandy email campaign dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">SalesHandy</h3>
               <p class="card-text text-muted small mb-0">Sales outreach campaigns</p>
@@ -121,7 +144,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/activecampaign.png" class="card-img-top work-gallery-img" alt="ActiveCampaign deals dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/activecampaign.jpg" class="card-img-top work-gallery-img" alt="ActiveCampaign deals dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">ActiveCampaign</h3>
               <p class="card-text text-muted small mb-0">Automation &amp; deal tracking</p>
@@ -130,7 +153,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/klaviyo.png" class="card-img-top work-gallery-img" alt="Klaviyo analytics dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/klaviyo.jpg" class="card-img-top work-gallery-img" alt="Klaviyo analytics dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Klaviyo</h3>
               <p class="card-text text-muted small mb-0">Ecommerce email analytics</p>
@@ -139,7 +162,7 @@
         </div>
         <div class="col-6 col-md-4 col-lg-3">
           <div class="card shadow-sm h-100">
-            <img src="dashboards/brevo.png" class="card-img-top work-gallery-img" alt="Brevo marketing dashboard" loading="lazy" decoding="async">
+            <img src="dashboards/brevo.jpg" class="card-img-top work-gallery-img" alt="Brevo marketing dashboard" loading="lazy" decoding="async">
             <div class="card-body">
               <h3 class="h6 fw-600 mb-1">Brevo</h3>
               <p class="card-text text-muted small mb-0">Email &amp; SMS marketing</p>
