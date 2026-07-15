@@ -23094,7 +23094,7 @@
                     return (0, u.jsxs)(u.Fragment, {
                         children: [(0, u.jsx)("section", {
                             id: "portfolio",
-                            className: "section bg-light",
+                            className: "section bg-white",
                             children: (0, u.jsxs)("div", {
                                 className: "container",
                                 children: [(0, u.jsx)("p", {
